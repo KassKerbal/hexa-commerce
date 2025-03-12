@@ -5,8 +5,7 @@ const initialState = {
   minPrice: null,
   maxPrice: null,
   rating: [],
-  category: 'all',
-  availableOnly: false
+  category: 'all'
 };
 
 const filtersSlice = createSlice({
@@ -17,6 +16,7 @@ const filtersSlice = createSlice({
       state.searchQuery = action.payload;
     },
     setPriceRange: (state, action) => {
+      console.log(state, action)
       state.minPrice = action.payload.min;
       state.maxPrice = action.payload.max;
     },
@@ -25,9 +25,6 @@ const filtersSlice = createSlice({
     },
     setRating: (state, action) => {
       state.rating = action.payload;
-    },
-    toggleAvailable: (state) => {
-      state.availableOnly = !state.availableOnly;
     },
     resetFilters: () => initialState
   }
@@ -38,7 +35,6 @@ export const {
   setPriceRange,
   setRating,
   setCategory, 
-  toggleAvailable, 
   resetFilters 
 } = filtersSlice.actions;
 

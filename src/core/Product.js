@@ -1,11 +1,12 @@
 export default class Product {
-    constructor({ id, title, price, category, image, description }) {
+    constructor({ id, title, price, rating, category, image, description }) {
         if (!id || !title || price === undefined) {
             throw new Error("Invalid product data");
         }
         this.id = id;
         this.title = title;
         this.price = price;
+        this.rating = rating;
         this.category = category || "Unknown category";
         this.image = image || "No image";
         this.description = description || "No description";

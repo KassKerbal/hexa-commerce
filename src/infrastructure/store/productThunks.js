@@ -10,8 +10,18 @@ export const loadProducts = () => async (dispatch, getState) => {
     
     const adapter = new ProductAdapter();
     const products = await adapter.getProductsList();
+    console.log(products)
+    const reduxPlainProducts = products.map(product => ({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      rating: product.rating.rate,
+      category: product.category,
+      image: product.image,
+      description: product.description
+    }));
     
-    dispatch(productsReceived(products));
+    dispatch(productsReceived(reduxPlainProducts));
   } catch (error) {
     dispatch(productsRequestFailed(error.message));
   }
