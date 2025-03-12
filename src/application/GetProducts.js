@@ -4,6 +4,6 @@ export default class GetProducts {
     }
   
     async execute() {
-      return this.productRepository.getAll();
+      return this.productRepository.getProducts();
     }
   }

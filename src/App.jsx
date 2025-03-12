@@ -8,13 +8,15 @@ const App = () => {
 
   return (
     <>
+      <Router>
       <Navbar/>
       <Sidebar />
-      <Router>
+      <div className='ml-64'>
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
+      </div>
       </Router>
     </>
   );

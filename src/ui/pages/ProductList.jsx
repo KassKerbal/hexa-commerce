@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
-import ProductAdapter from '../../adapters/ProductAdapter';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilteredProducts } from '../../infrastructure/store/productSelector';
+import { loadProducts } from '../../infrastructure/store/productThunks';
 import ProductCard from '../components/ProductCard';
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const products = useSelector(selectFilteredProducts);
+  const { loading, error } = useSelector((state) => state.products);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const adapter = new ProductAdapter();
-      const productsList = await adapter.getProductsList();
-      setProducts(productsList);
-    };
-    fetchProducts();
-  }, []);
+    dispatch(loadProducts());
+  }, [dispatch]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="container mx-auto p-4">

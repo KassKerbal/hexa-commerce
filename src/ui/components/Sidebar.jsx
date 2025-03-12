@@ -1,4 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { 
+  setCategory,
+  resetFilters
+} from '../../infrastructure/store/filtersSlice';
+
 const Sidebar = () => {
+
+    const dispatch = useDispatch();
+    const { loading, error } = useSelector((state) => state.products);
+    const filters = useSelector((state) => state.filters);
+
+      const handleCategoryChange = (e) => {
+        dispatch(setCategory(e.target.value));
+      };
+      
     return (
         <aside className="fixed top-16 left-0 bottom-0 w-64 bg-white shadow-lg p-6 overflow-y-auto">
             {/* Filtro por Categorías */}
@@ -12,6 +28,7 @@ const Sidebar = () => {
                                     <input
                                         type="checkbox"
                                         className="form-checkbox h-4 w-4 text-indigo-600 rounded"
+                                        onChange={handleCategoryChange}
                                     />
                                     <span className="text-gray-700">{category}</span>
                                 </label>

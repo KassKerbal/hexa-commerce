@@ -1,12 +1,12 @@
 import GetProducts from '../application/GetProducts';
 import GetProductById from '../application/GetProductById';
-import ProductApiRepository from '../infrastructure/ProductApiRepository';
+import ProductApiRepository from '../infrastructure/productApiRepository';
 
 export default class ProductAdapter {
   constructor() {
-    this.productRepository = new ProductApiRepository();
-    this.getProducts = new GetProducts(this.productRepository);
-    this.getProductById = new GetProductById(this.productRepository);
+    this.repository  = new ProductApiRepository();
+    this.getProducts = new GetProducts(this.repository);
+    this.getProductById = new GetProductById(this.repository);
   }
 
   async getProductsList() {
