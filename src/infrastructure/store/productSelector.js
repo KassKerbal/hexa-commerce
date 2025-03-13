@@ -14,7 +14,6 @@ export const selectFilteredProducts = createSelector(
         (filters.maxPrice === null || product.price <= filters.maxPrice)
       );
       const matchesRating = filters.rating.includes(Math.trunc(product.rating) + 1);
-      console.log(Math.trunc(product.rating) + 1)
 
       return matchesSearch && matchesCategory && matchesPrice && matchesRating;
     });

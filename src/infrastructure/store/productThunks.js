@@ -10,7 +10,7 @@ export const loadProducts = () => async (dispatch, getState) => {
     
     const adapter = new ProductAdapter();
     const products = await adapter.getProductsList();
-    console.log(products)
+    
     const reduxPlainProducts = products.map(product => ({
       id: product.id,
       title: product.title,

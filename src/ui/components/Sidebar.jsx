@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setCategory, setPriceRange, setRating } from '../../infrastructure/store/filtersSlice';
-import { selectFilteredProducts } from '../../infrastructure/store/productSelector';
 
 const categories = [
     "all",
@@ -42,7 +41,6 @@ const Sidebar = () => {
 
     return (
         <aside className="fixed top-16 left-0 bottom-0 w-64 bg-white shadow-lg p-6 overflow-y-auto">
-            {/* Filtro por Categorías */}
             <div className="mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Categories</h3>
                 <ul className="space-y-2">
@@ -56,6 +54,7 @@ const Sidebar = () => {
                                         className="form-checkbox h-4 w-4 text-indigo-600 rounded"
                                         value={category}
                                         onChange={handleCategoryChange}
+                                        defaultChecked={category === 'all'}
                                     />
                                     <span className="text-gray-700">{category}</span>
                                 </label>
@@ -65,10 +64,9 @@ const Sidebar = () => {
                 </ul>
             </div>
 
-            {/* Filtro por Precio */}
             <div className="mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Price</h3>
-                <div className="space-y-4">
+                <label>
                     <input
                         type="range"
                         min="0"
@@ -76,17 +74,16 @@ const Sidebar = () => {
                         className="w-full"
                         defaultValue={600}
                         onChange={handlePriceChange}
-                    />
-                    <div className="flex justify-between text-sm text-gray-600">
-                        <span>0€</span>
-                        <span>600€</span>
-                    </div>
+                        />
+                </label>
+                <div className="flex justify-between text-sm text-gray-600">
+                    <span>0€</span>
+                    <span>600€</span>
                 </div>
             </div>
 
-            {/* Filtro por Valoración */}
             <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Valoración</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Rating</h3>
                 <ul className="space-y-2">
                     {stars.map((rating) => (
                         <li key={rating}>

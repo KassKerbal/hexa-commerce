@@ -37,7 +37,7 @@ const Navbar = () => {
 
           {/* Menú de Usuario (opcional) */}
           <div className="flex items-center space-x-4">
-            <button className="cursor-pointer p-2 text-gray-600 hover:text-indigo-600">
+            <button className="cursor-pointer p-2 text-gray-600 hover:text-indigo-600" aria-label="Login" >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
