@@ -1,9 +1,9 @@
-export default class ProductRepositoryPort {
-    getProducts() {
+export default class CartRepositoryPort {
+    saveCart(cart) {
       throw new Error("Método abstracto: implementar en infraestructura");
     }
-    
-    getProductById(id) {
+  
+    getCart() {
       throw new Error("Método abstracto: implementar en infraestructura");
     }
   }

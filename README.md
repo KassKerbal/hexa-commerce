@@ -9,12 +9,15 @@ HEXA-COMMERCE/
 │   |   └──ProductAdapter.js 
 │   ├── application
 |   |   ├── GetProductById.js
-│   |   └── GetProducts.js
+|   |   ├── GetProducts.js
+│   |   └── productRepositoryPort.js
 │   ├── core
 │   |   └── Product.js
 │   ├── infrastructure
 │   |   └── ProductApiRepository.js
 │   |   └── store/
+│   |       ├── filterSlice.js
+│   |       ├── productSelector.js
 │   |       ├── productsSlice.js
 │   |       ├── productsThunks.js
 │   |       └── store.js

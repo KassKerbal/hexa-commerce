@@ -1,4 +1,4 @@
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, handleCartClick }) => {
 
   const price = product.price.toFixed(2).replace('.', ',') + ' €';
 
@@ -25,11 +25,11 @@ const ProductCard = ({ product }) => {
           {product.description}
         </p>
 
-        <div className="flex justify-between items-center">
+        <div className="flex gap-2 flex-col lg:flex-row justify-between items-center">
           <p className="text-lg font-extrabold text-gray-900">
             {price}
           </p>
-          <button className="cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-semibold">
+          <button onClick={() => handleCartClick(product)} className="w-full lg:w-auto cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-semibold">
             Add to Cart
           </button>
         </div>
